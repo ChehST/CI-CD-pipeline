@@ -23,3 +23,25 @@ jobs:
         description: Created automatically via GitHub Actions
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Find in commit messages
+      uses: atlassian/gajira-find-issue-key@v3
+      with:
+        from: commits    
+
+    - name: Check Issue
+      shell: bash
+      run: |
+        if [[ "${{steps.find_issue.outputs.ISSUE_ID}}" == "" ]]; then
+          echo "Please name your branch according to the JIRA issue: [project_key]-[task_number]-branch_name"
+          exit 1
+        fi
+        echo succcessfully found JIRA issue: ${{steps.find_issue.outputs.ISSUE_ID}}
+
+    - name: Transition issue
+      if: ${{ success() }}
+      uses: atlassian/gajira-transition@master
+      with:
+        issue: ${{ steps.find_issue.outputs.ISSUE_ID }}
+        transition: "Code review"
+# add few changes to take GA workflow
