@@ -1,0 +1,18 @@
+name: Jira ticket transition
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Jira Workflow
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Login
+        uses: atlassian/gajira-login@v3
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
