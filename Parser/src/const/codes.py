@@ -4,3 +4,5 @@ FILTER_TYPE = {'n':'AREA',
                'crc=1':'CURENCY',
                'gl=2':'VIEW',
                }
+
+CATHEGORY_LOCK = 'category/56/'
