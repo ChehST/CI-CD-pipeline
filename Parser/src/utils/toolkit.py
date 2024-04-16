@@ -1,6 +1,8 @@
 import cloudscraper
+from bs4 import BeautifulSoup as BSoup
 # Add imports here
 
+from const import *
 
 # returns requests Response object. It is able to bypass CFP
 def get_response_bypassed(url):
@@ -45,8 +47,44 @@ def remove_non_numeric_keys(dictionary):
 
 # get max values link
 def get_highest_link(links):
+    remove_non_numeric_keys(links)
     max_key = max(links.keys(), key=lambda x: int(x))
     max_link = links[max_key]
 
     return max_link
 
+def get_highest_key(links):
+    remove_non_numeric_keys(links)
+    print
+    max_key = max(links.keys(), key=lambda x: int(x))
+    return max_key
+
+# Cyclic function that count total pages with ads in the cathegory
+def get_last_page():
+    previous_last_page = 0
+    target_url_cathPart = BASE_URL + CATHEGORY_LOCK
+    target_url_reqPart = "?n=1&cmtype=1&price2=234567&crc=1&gl=2"
+    page = 1
+    print('we start scan from this address:', target_url_cathPart + str(page) + target_url_reqPart)
+    url_gen= target_url_cathPart + str(page) + target_url_reqPart
+
+    while True:
+        html = get_response_bypassed(url_gen).text
+        soup_html = BSoup(html,'lxml')
+        get_page_dict(soup_html)
+        highest_page = get_highest_key(links)
+
+        if highest_page == previous_last_page:
+            break
+            
+        previous_last_page = highest_page
+        url_gen = target_url_cathPart + str(highest_page) + target_url_reqPart
+        previous_last_page = highest_page
+    
+    print('There are: ' + str(highest_page) + ' pages in cathegory')
+    return int(highest_page)
+
+
+
+        
+    
