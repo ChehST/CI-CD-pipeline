@@ -6,5 +6,7 @@
 
 from bs4 import BeautifulSoup as BSoup
 
-from utils.toolkit import get_last_page
+from utils.toolkit import count_ads_at_page
 
+### PAR-23 Ads per page counter
+count_ads_at_page()

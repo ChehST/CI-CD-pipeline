@@ -25,9 +25,9 @@ def get_html_f(file):
     return html_plain
 
 
-###  PAR-31
-# page's link dict
+# page's link dict 'page num as a key':'link to page'
 links = {} # page's link dict
+
 # Return dict with pages and hrefs ; Input bsoup object
 def get_page_dict(parsed_page):
     for page in parsed_page.find('div',class_='dlf').find_all('a'):
@@ -84,7 +84,21 @@ def get_last_page():
     print('There are: ' + str(highest_page) + ' pages in cathegory')
     return int(highest_page)
 
+### PAR-23 Ads per page counter
+def count_ads_at_page():
+    counter = 0
+    plain_html = get_html_f('src/fixtures/index.html')
+    parsed_page = BSoup(plain_html,'lxml') #parse html
+    contentr = parsed_page.find(id="contentr") # find wrap for div 'dl'
 
+    if contentr:
+        dl_divs = contentr.find_all(class_="dl") # there are 2 divs named 'dl'
+        # Пройти по каждому контейнеру dl и найти все ссылки внутри него
+        for dl_ad in dl_divs:
+            ad_links = dl_ad.find_all('a') # there two dl_ad elements in dl_div
 
-        
-    
+    ad_list = ad_links[:-7] # cut off last 7 elements because these is paginators hrefs
+    # 
+    for ad in ad_list:
+        counter+=1
+    return counter
