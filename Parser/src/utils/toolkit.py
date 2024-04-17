@@ -102,3 +102,22 @@ def count_ads_at_page():
     for ad in ad_list:
         counter+=1
     return counter
+
+def counter_ads_at_page_request(url):
+    counter = 0
+    plain_html = get_response_bypassed(url).text
+    parsed_page = BSoup(plain_html,'lxml') #parse html
+    contentr = parsed_page.find(id="contentr") # find wrap for div 'dl'
+
+    if contentr:
+        dl_divs = contentr.find_all(class_="dl") # there are 2 divs named 'dl'
+        # Пройти по каждому контейнеру dl и найти все ссылки внутри него
+        for dl_ad in dl_divs:
+            ad_links = dl_ad.find_all('a') # there two dl_ad elements in dl_div
+
+    ad_list = ad_links[:-7] # cut off last 7 elements because these is paginators hrefs
+    # 
+    for ad in ad_list:
+        counter+=1
+    return counter
+
