@@ -19,10 +19,15 @@ def ad_counter(ads):
     pass
 
 # function that return html code from file
-def get_html_f(file):
-    with open(file,'r',encoding="utf-8") as html:
-        html_plain = html.read()
-    return html_plain
+# It returns File or False. in boolin logic its gonna
+# makes some problem, expl: in test cases
+def get_html_f(file:str):
+    try:
+        with open(file,'r',encoding="utf-8") as html:
+            html_plain = html.read()
+        return html_plain
+    except FileNotFoundError:
+        return False
 
 
 # page's link dict 'page num as a key':'link to page'
