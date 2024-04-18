@@ -3,7 +3,13 @@ get_last_page, count_ads_at_page, counter_ads_at_page_request
 
 
 import pytest
+from requests import get
 
+
+# requests.get that response iuam CF
+def test_requests_get():
+    # acceptence test
+    assert get("https://www.list.am/category/56/1?n=0&cmtype=1&price2=234567&crc=1&gl=2").status_code == 403
 
 ### Unit tests
 @pytest.mark.parametrize(
@@ -16,6 +22,7 @@ import pytest
         ]
 )
 def test_get_response_bypassed(url, expected_code):
+    # acceptence test
     try:
         code_assertion = get_response_bypassed(url).status_code
         assert code_assertion == expected_code
