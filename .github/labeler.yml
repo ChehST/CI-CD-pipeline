@@ -1,0 +1,26 @@
+Build:
+- changed-files:
+  - any-glob-to-any-file:
+    - ".github/**"
+    - ".gitignore"
+
+Source:
+- changed-files:
+  - any-glob-to-any-file:
+    - "Parser/requirements.txt"
+    - "Parser/requirements_dev.txt"
+
+Tests:
+- changed-files:
+  - any-glob-to-any-file:
+    - "**/pytest.ini"
+    - " "
+
+Documentation:
+- changed-files:
+  - any-glob-to-any-file:
+    - "docs/**"
+    - "'**/*.md'"
+
+feature:
+ - head-branch: ['^feature', 'feature']
