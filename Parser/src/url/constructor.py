@@ -3,7 +3,7 @@ on url address
 """
 
 
-from const import *
+from ..const import *
 
 target_url_cathPart = BASE_URL + CATHEGORY_LOCK
 target_url_reqPart = "?n=1&cmtype=1&price2=200000&crc=1&gl=2"

@@ -2,7 +2,7 @@ import cloudscraper
 from bs4 import BeautifulSoup as BSoup
 # Add imports here
 
-from const import *
+from ..const import *
 
 # returns requests Response object. It is able to bypass CFP
 def get_response_bypassed(url):

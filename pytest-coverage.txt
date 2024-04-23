@@ -1,0 +1,64 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.2, pytest-8.1.1, pluggy-1.4.0
+rootdir: C:\Users\Cheh\Desktop\coding\ci-cd-pipeline
+configfile: ov=app
+collected 13 items
+
+Parser\tests\toolkit_test.py ..F..........                               [100%]
+
+================================== FAILURES ===================================
+________________ test_get_html_f[src/fixtures/index.html-True] ________________
+
+path_to_file = 'src/fixtures/index.html', expected_result = True
+
+    @pytest.mark.parametrize(
+            "path_to_file, expected_result",
+            [
+                ("src/fixtures/index.html", True),
+                ("src/fixtures/doesn't_exist.html_file", False),
+                (1,False),
+                (' ',False),
+                ({1,'r',('2','2')}, False),
+                ([],False),
+            ])
+    def test_get_html_f(path_to_file, expected_result):
+        try:
+            result = get_html_f(path_to_file)
+            if result != False:
+                result = True # Therefore, the opened file status is 'True'.
+            else: result = False
+>           assert result == expected_result
+E           assert False == True
+
+Parser\tests\toolkit_test.py:49: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+path_to_file = 'src/fixtures/index.html', expected_result = True
+
+    @pytest.mark.parametrize(
+            "path_to_file, expected_result",
+            [
+                ("src/fixtures/index.html", True),
+                ("src/fixtures/doesn't_exist.html_file", False),
+                (1,False),
+                (' ',False),
+                ({1,'r',('2','2')}, False),
+                ([],False),
+            ])
+    def test_get_html_f(path_to_file, expected_result):
+        try:
+            result = get_html_f(path_to_file)
+            if result != False:
+                result = True # Therefore, the opened file status is 'True'.
+            else: result = False
+            assert result == expected_result
+        except Exception:
+>           assert not expected_result
+E           assert not True
+
+Parser\tests\toolkit_test.py:51: AssertionError
+- generated xml file: C:\Users\Cheh\Desktop\coding\ci-cd-pipeline\pytest.xml --
+=========================== short test summary info ===========================
+FAILED Parser/tests/toolkit_test.py::test_get_html_f[src/fixtures/index.html-True]
+======================== 1 failed, 12 passed in 0.93s =========================
