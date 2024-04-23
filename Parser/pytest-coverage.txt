@@ -1,0 +1,10 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.2, pytest-8.1.1, pluggy-1.4.0
+rootdir: C:\Users\Cheh\Desktop\coding\ci-cd-pipeline\Parser
+configfile: ov=app
+collected 13 items
+
+tests\toolkit_test.py .............                                      [100%]
+
+- generated xml file: C:\Users\Cheh\Desktop\coding\ci-cd-pipeline\Parser\pytest.xml -
+============================= 13 passed in 0.85s ==============================
