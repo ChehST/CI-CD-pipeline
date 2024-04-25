@@ -3,7 +3,7 @@ name: "Create draft release"
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   update_draft_release:
