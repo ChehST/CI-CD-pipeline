@@ -3,9 +3,10 @@ name: Acceptence tests - pytest
 on:
   push:
     branches:
-      - dev
+      - min
   pull_request:
     branches:
+      - main
       - dev
   schedule:
     - cron: "0 0 * * 0" # Запускать каждое воскресенье в полночь UTC
