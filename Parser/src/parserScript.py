@@ -6,9 +6,9 @@
 
 from bs4 import BeautifulSoup as BSoup
 
-from const import BASE_URL
-from const.codes import CATHEGORY_LOCK
-from utils.toolkit import count_ads_at_page, get_last_page,counter_ads_at_page_request
+from .const import BASE_URL
+from .const.codes import CATHEGORY_LOCK
+from .utils.toolkit import count_ads_at_page, get_last_page,counter_ads_at_page_request
 
 last_page = get_last_page()
 target_url_cathPart = BASE_URL + CATHEGORY_LOCK
