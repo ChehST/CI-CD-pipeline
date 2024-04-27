@@ -1,4 +1,4 @@
-name: Run pytest on push or pull request and scheduled weekly
+name: Acceptence tests - pytest
 
 on:
   push:
