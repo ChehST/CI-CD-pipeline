@@ -1,4 +1,4 @@
-name: Acceptence tests - pyt
+name: Acceptence tests - pytest
 
 on:
   push:
